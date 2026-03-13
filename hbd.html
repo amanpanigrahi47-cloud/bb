@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bestie!</title>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --bg-soft: #FFF1F1;
+            --pink-light: #FFB6C1;
+            --pink-medium: #F875AA;
+            --pink-hot: #FF69B4;
+            --glass: rgba(255, 255, 255, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-soft);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* LAYER 1: Background Blobs */
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--pink-light) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: 1;
+            border-radius: 50%;
+        }
+        .blob-1 { top: -10%; left: -10%; }
+        .blob-2 { bottom: -10%; right: -10%; }
+
+        /* LAYER 2: Floating Hearts */
+        .heart {
+            position: absolute;
+            color: var(--pink-medium);
+            font-size: 20px;
+            bottom: -50px;
+            animation: float 6s linear infinite;
+            opacity: 0.6;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* LAYER 3: Glassmorphism Card */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(248, 117, 170, 0.2);
+            z-index: 10;
+            max-width: 450px;
+            width: 90%;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--pink-hot);
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .photo-frame {
+            width: 150px;
+            height: 150px;
+            background: #fff;
+            border: 8px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin: 0 auto 25px;
+            transform: rotate(-3deg);
+            overflow: hidden;
+        }
+
+        button {
+            background-color: var(--pink-medium);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(248, 117, 170, 0.3);
+        }
+
+        button:hover {
+            background-color: var(--pink-hot);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="card">
+        <div class="photo-frame">
+            <img src="<a href="https://ibb.co/JwBnV8XN"><img src="https://i.ibb.co/JwBnV8XN/Whats-App-Image-2026-03-13-at-10-54-36-AM.jpg" alt="Whats-App-Image-2026-03-13-at-10-54-36-AM" border="0"></a>" alt="Best Friend" style="width:100%">
+        </div>
+        <h1>Happy Birthday!</h1>
+        <p style="color: #7a4d5c; margin-bottom: 30px;">To the person who makes every day brighter. You're not just my best friend; you're my favorite human. ✨</p>
+        <button onclick="createExplosion()">Click for Love</button>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        setInterval(createHeart, 400);
+
+        function createExplosion() {
+            for(let i=0; i<20; i++) {
+                setTimeout(createHeart, i * 50);
+            }
+            alert("Sending you 1000% extra love today! 💖");
+        }
+    </script>
+</body>
+</html>
